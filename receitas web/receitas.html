@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas Deliciosas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #ff6347;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+        .box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .box:hover {
+            transform: scale(1.05);
+        }
+        .box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .recipe-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+        .recipe-content {
+            margin-top: 15px;
+            padding: 10px;
+            text-align: left;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ff6347;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        Receitas 
+    </header>
+
+    <div class="container">
+        <h2>Experimente Nossas Receitas</h2>
+        <div class="grid">
+            <div class="box">
+                <div class="recipe-title">Lasanha de Frango</div>
+                <img src="lasanha.jpg" alt="Lasanha de Frango">
+                <div class="recipe-content">
+                    <h3>Ingredientes</h3>
+                    <p>500g de peito de frango, 200g de queijo mussarela, 1 pacote de massa de lasanha, molho de tomate, sal e temperos a gosto.</p>
+                    <h4>Modo de preparo</h4>
+                    <p>Cozinhe o frango, desfie e tempere. Monte camadas de massa, frango, molho e queijo. Leve ao forno por 40 minutos a 180°C.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="recipe-title">Brownie de Chocolate</div>
+                <img src="brownie.jpg" alt="Brownie de Chocolate">
+                <div class="recipe-content">
+                    <h3>Ingredientes</h3>
+                    <p>200g de chocolate meio amargo, 100g de manteiga, 3 ovos, 1 xícara de açúcar, 1 xícara de farinha de trigo.</p>
+                    <h4>Modo de preparo</h4>
+                    <p>Derreta o chocolate com a manteiga. Misture os ovos, açúcar e farinha. Asse a 180°C por 25 minutos.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="recipe-title">Suco Detox</div>
+                <img src="suco-detox.jpg" alt="Suco Detox">
+                <div class="recipe-content">
+                    <h3>Ingredientes</h3>
+                    <p>1 folha de couve, 1 maçã, suco de 1 limão, 200ml de água, 1 colher de chia.</p>
+                    <h4>Modo de preparo</h4>
+                    <p>Bata todos os ingredientes no liquidificador e sirva gelado.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Desenvolvido por Ítalo Damian Neto
+    </footer>
+</body>
+</html>
