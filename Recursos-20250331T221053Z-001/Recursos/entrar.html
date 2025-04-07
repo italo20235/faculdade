@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Spotify</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #191414; /* Cor de fundo do Spotify */
+            color: white;
+        }
+        header {
+            background-color: #191414; /* Cor do header */
+        }
+        .navbar-nav .nav-link {
+            color: white !important; /* Cor dos links no navbar */
+        }
+        .navbar-brand img {
+            width: 142px;
+        }
+        .form-control {
+            background-color: #333; /* Cor do fundo dos campos */
+            color: white; /* Cor do texto */
+            border: 1px solid #1DB954; /* Cor da borda do campo */
+        }
+        .form-control::placeholder {
+            color: #B3B3B3; /* Cor do texto do placeholder */
+        }
+        .btn-primary {
+            background-color: #1DB954; /* Cor do botão "Entrar" */
+            border-color: #1DB954;
+        }
+        .btn-primary:hover {
+            background-color: #1AA34A; /* Cor do botão ao passar o mouse */
+            border-color: #1AA34A;
+        }
+        .container {
+            margin-top: 80px;
+        }
+        .text-center p a {
+            color: #1DB954; /* Cor do link "Inscrever-se" */
+        }
+        .text-center p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light fixed-top">
+            <div class="container">
+                <a href="index.html" class="navbar-brand">
+                    <img src="./imagens/spotify.svg" alt="Spotify Logo"/>
+                </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+                    <i class="fas fa-bars text-white"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="nav-principal">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="premium.html" class="nav-link">Premium</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5 pt-5">
+        <h1 class="text-center">Entrar no Spotify</h1>
+        <!-- Formulário de login -->
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        </form>
+
+        <!-- Link para quem não tem conta -->
+        <div class="text-center mt-3">
+            <p>Não tem uma conta? <a href="inscrever-se.html">Inscrever-se</a></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
