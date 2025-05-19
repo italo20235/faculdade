@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Componente Perfil Usuário</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #f0f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .profile-container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 320px;
+    width: 90vw;
+  }
+  .profile-container h2 {
+    margin: 0 0 12px 0;
+    color: #223344;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+  .input-name {
+    font-size: 1rem;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 2px solid #a0aec0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 18px;
+    transition: border-color 0.3s ease;
+  }
+  .input-name:focus {
+    outline: none;
+    border-color: #4395f9;
+    box-shadow: 0 0 6px #90b4ffaa;
+  }
+  .greeting {
+    font-size: 1.2rem;
+    margin: 12px 0 18px 0;
+    min-height: 1.5em;
+    color: #2a4365;
+    font-weight: 600;
+  }
+  .like-button {
+    background-color: #3182ce;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .like-button:hover,
+  .like-button.hovered {
+    background-color: #2c5282;
+    box-shadow: 0 6px 14px rgb(44 82 130 / 0.6);
+  }
+  .like-count {
+    margin-top: 14px;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+</style>
+</head>
+<body>
+  <div class="profile-container">
+    <h2>Nome do Usuário</h2>
+    <input
+      id="usernameInput"
+      type="text"
+      class="input-name"
+      placeholder="Digite seu nome"
+      aria-label="Nome do usuário"
+    />
+    <div id="greeting" class="greeting"></div>
+    <button id="likeButton" class="like-button" type="button">Curtir</button>
+    <div id="likeCount" class="like-count">Curtidas: 0</div>
+  </div>
+
+<script>
+  (function () {
+    const usernameInput = document.getElementById('usernameInput');
+    const greeting = document.getElementById('greeting');
+    const likeButton = document.getElementById('likeButton');
+    const likeCountDisplay = document.getElementById('likeCount');
+
+    let likeCount = 0;
+
+    // Click event: increment count, show personalized greeting
+    likeButton.addEventListener('click', function () {
+      const name = usernameInput.value.trim();
+      likeCount++;
+      // Show greeting only if name is not empty
+      if (name.length > 0) {
+        greeting.innerText = `Olá, ${name}! Obrigado pelo seu clique.`;
+      } else {
+        greeting.innerText = `Olá! Obrigado pelo seu clique.`;
+      }
+      likeCountDisplay.innerText = `Curtidas: ${likeCount}`;
+    });
+
+    // Input event: nothing specific for this task but added for event completeness
+    usernameInput.addEventListener('input', function () {
+      // Not required to do anything here by task, but for control if needed
+    });
+
+    // Keydown event: log each key pressed in the input field
+    usernameInput.addEventListener('keydown', function (event) {
+      console.log(`Tecla pressionada: ${event.key}`);
+    });
+
+    // Mouseover event on likeButton: add special styling class
+    likeButton.addEventListener('mouseover', function () {
+      likeButton.classList.add('hovered');
+    });
+
+    // Mouseout event to remove hover styling (to toggle off)
+    likeButton.addEventListener('mouseout', function () {
+      likeButton.classList.remove('hovered');
+    });
+  })();
+</script>
+</body>
+</html>
+
