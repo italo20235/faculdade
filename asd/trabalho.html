@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios com Arrays</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3c4b64;
+            margin-top: 30px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .result {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group input[type="text"] {
+            width: calc(100% - 120px);
+            display: inline-block;
+        }
+
+        .input-group button {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+    <script>
+        // Exercício 1: Soma de elementos de um array
+        function somaElementos() {
+            let input = document.getElementById('array1').value;
+            let array = input.split(',').map(num => parseFloat(num.trim()));  // Converte a string para números
+            let soma = array.reduce((acc, num) => acc + num, 0);
+            document.getElementById('resultado1').textContent = `Soma: ${soma}`;
+        }
+
+        // Exercício 2: Transformar strings em maiúsculas
+        function maiusculas() {
+            let input = document.getElementById('array2').value;
+            let array = input.split(',').map(item => item.trim());
+            let resultado = array.map(item => item.toUpperCase());
+            document.getElementById('resultado2').textContent = `Maiúsculas: ${JSON.stringify(resultado)}`;
+        }
+
+        // Exercício 3: Adicionar item ao final de um array
+        function adicionarItem() {
+            let input = document.getElementById('array3').value;
+            let array = input.split(',').map(item => item.trim());
+            let item = document.getElementById('item').value;
+            array.push(item);
+            document.getElementById('resultado3').textContent = `Novo Array: ${JSON.stringify(array)}`;
+        }
+
+        // Exercício 4: Remover primeiro elemento
+        function removerPrimeiroElemento() {
+            let input = document.getElementById('array4').value;
+            let array = input.split(',').map(item => item.trim());
+            array.shift();
+            document.getElementById('resultado4').textContent = `Novo Array: ${JSON.stringify(array)}`;
+        }
+
+        // Exercício 5: Filtrar números pares
+        function filtrarPares() {
+            let input = document.getElementById('array5').value;
+            let array = input.split(',').map(num => parseFloat(num.trim()));
+            let resultado = array.filter(num => num % 2 === 0);
+            document.getElementById('resultado5').textContent = `Pares: ${JSON.stringify(resultado)}`;
+        }
+
+        // Exercício 6: Contar palavras com mais de 5 letras
+        function contarPalavrasMaiorQue5() {
+            let input = document.getElementById('array6').value;
+            let array = input.split(',').map(palavra => palavra.trim());
+            let resultado = array.filter(palavra => palavra.length > 5).length;
+            document.getElementById('resultado6').textContent = `Contagem: ${resultado}`;
+        }
+
+        // Exercício 7: Maior número de um array
+        function maiorNumero() {
+            let input = document.getElementById('array7').value;
+            let array = input.split(',').map(num => parseFloat(num.trim()));
+            let resultado = Math.max(...array);
+            document.getElementById('resultado7').textContent = `Maior número: ${resultado}`;
+        }
+
+        // Exercício 8: Nomes separados por vírgula
+        function nomesSeparados() {
+            let input = document.getElementById('array8').value;
+            let array = input.split(',').map(nome => nome.trim());
+            let resultado = array.join(', ');
+            document.getElementById('resultado8').textContent = `Nomes: ${resultado}`;
+        }
+
+        // Exercício 9: Ordem reversa
+        function ordemReversa() {
+            let input = document.getElementById('array9').value;
+            let array = input.split(',').map(item => item.trim());
+            let resultado = array.reverse();
+            document.getElementById('resultado9').textContent = `Array Reverso: ${JSON.stringify(resultado)}`;
+        }
+
+        // Exercício 10: Quadrados dos números
+        function quadrados() {
+            let input = document.getElementById('array10').value;
+            let array = input.split(',').map(num => parseFloat(num.trim()));
+            let resultado = array.map(num => num ** 2);
+            document.getElementById('resultado10').textContent = `Quadrados: ${JSON.stringify(resultado)}`;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Exercícios com Arrays</h1>
+
+    <div class="container">
+        <div class="section">
+            <h2>Exercício 1: Soma de Elementos</h2>
+            <input type="text" id="array1" placeholder="Exemplo: 1, 2, 3" />
+            <button onclick="somaElementos()">Somar</button>
+            <p id="resultado1" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 2: Strings em Maiúsculas</h2>
+            <input type="text" id="array2" placeholder="Exemplo: a, b, c" />
+            <button onclick="maiusculas()">Converter</button>
+            <p id="resultado2" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 3: Adicionar Item ao Final</h2>
+            <div class="input-group">
+                <input type="text" id="array3" placeholder="Exemplo: a, b" />
+                <input type="text" id="item" placeholder="Item para adicionar" />
+                <button onclick="adicionarItem()">Adicionar</button>
+            </div>
+            <p id="resultado3" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 4: Remover o Primeiro Elemento</h2>
+            <input type="text" id="array4" placeholder="Exemplo: 1, 2, 3" />
+            <button onclick="removerPrimeiroElemento()">Remover</button>
+            <p id="resultado4" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 5: Filtrar Números Pares</h2>
+            <input type="text" id="array5" placeholder="Exemplo: 1, 2, 3, 4" />
+            <button onclick="filtrarPares()">Filtrar</button>
+            <p id="resultado5" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 6: Contar Palavras com Mais de 5 Letras</h2>
+            <input type="text" id="array6" placeholder="Exemplo: uma, longa, historia" />
+            <button onclick="contarPalavrasMaiorQue5()">Contar</button>
+            <p id="resultado6" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 7: Maior Número</h2>
+            <input type="text" id="array7" placeholder="Exemplo: 5, 10, 15" />
+            <button onclick="maiorNumero()">Encontrar</button>
+            <p id="resultado7" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 8: Nomes Separados por Vírgula</h2>
+            <input type="text" id="array8" placeholder="Exemplo: Ana, João, Maria" />
+            <button onclick="nomesSeparados()">Separar</button>
+            <p id="resultado8" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 9: Ordem Reversa</h2>
+            <input type="text" id="array9" placeholder="Exemplo: 1, 2, 3" />
+            <button onclick="ordemReversa()">Reverter</button>
+            <p id="resultado9" class="result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Exercício 10: Quadrados dos Números</h2>
+            <input type="text" id="array10" placeholder="Exemplo: 1, 2, 3" />
+            <button onclick="quadrados()">Quadrar</button>
+            <p id="resultado10" class="result"></p>
+        </div>
+    </div>
+
+</body>
+</html>
