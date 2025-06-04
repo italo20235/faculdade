@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas Premium - E-commerce</title>
+    <meta name="description" content="Loja online de bebidas premium com variedade de vinhos, cervejas e destilados">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>Bebidas Premium</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#admin">Admin</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="cart-btn" aria-label="Carrinho de compras">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <button class="user-btn" aria-label="Área do usuário">👤</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h2>Bebidas Premium para Todos os Momentos</h2>
+                <p>Descubra nossa seleção exclusiva de vinhos, cervejas artesanais e destilados premium</p>
+                <button class="cta-button">Ver Produtos</button>
+            </div>
+            <div class="hero-image">
+                <img src="bebidas.png" alt="Coleção de bebidas premium" class="hero-img">
+            </div>
+        </section>
+
+        <section id="produtos" class="products-section">
+            <div class="section-header">
+                <h2>Nossos Produtos</h2>
+                <div class="filters">
+                    <label for="category-filter">Categoria:</label>
+                    <select id="category-filter" name="category">
+                        <option value="">Todas</option>
+                        <option value="vinho">Vinhos</option>
+                        <option value="cerveja">Cervejas</option>
+                        <option value="destilado">Destilados</option>
+                        <option value="nao-alcoolico">Não Alcoólicos</option>
+                    </select>
+                    
+                    <label for="price-filter">Preço:</label>
+                    <select id="price-filter" name="price">
+                        <option value="">Todos</option>
+                        <option value="0-50">R$ 0 - 50</option>
+                        <option value="50-100">R$ 50 - 100</option>
+                        <option value="100-200">R$ 100 - 200</option>
+                        <option value="200+">R$ 200+</option>
+                    </select>
+                    
+                    <button id="search-btn" type="button">Buscar</button>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="products-grid">
+            </div>
+        </section>
+
+        <section id="dashboard" class="dashboard-section">
+            <div class="dashboard-header">
+                <h2>Dashboard de Estoque</h2>
+                <div class="dashboard-controls">
+                    <button id="refresh-dashboard">Atualizar</button>
+                    <button id="export-report">Exportar Relatório</button>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Resumo do Estoque</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Total de Produtos</span>
+                            <span class="stat-value" id="total-products">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Produtos em Estoque</span>
+                            <span class="stat-value" id="in-stock">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Produtos Esgotados</span>
+                            <span class="stat-value" id="out-of-stock">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Valor Total do Estoque</span>
+                            <span class="stat-value" id="total-value">R$ 0,00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Produtos por Categoria</h3>
+                    <div class="chart-container">
+                        <canvas id="category-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Produtos com Estoque Baixo</h3>
+                    <div class="low-stock-list" id="low-stock-list">
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Vendas por Mês</h3>
+                    <div class="chart-container">
+                        <canvas id="sales-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="admin" class="admin-section">
+            <div class="admin-header">
+                <h2>Gerenciamento de Produtos</h2>
+                <button id="add-product-btn" class="primary-btn">Adicionar Produto</button>
+            </div>
+            
+            <div class="admin-content">
+                <div class="admin-table-container">
+                    <table class="admin-table" id="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imagem</th>
+                                <th>Nome</th>
+                                <th>Categoria</th>
+                                <th>Preço</th>
+                                <th>Estoque</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="product-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Adicionar Produto</h3>
+                <button class="modal-close" aria-label="Fechar modal">&times;</button>
+            </div>
+            
+            <form id="product-form" class="modal-body">
+                <div class="form-group">
+                    <label for="product-name">Nome do Produto *</label>
+                    <input type="text" id="product-name" name="name" required aria-describedby="name-error">
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-category">Categoria *</label>
+                    <select id="product-category" name="category" required aria-describedby="category-error">
+                        <option value="">Selecione uma categoria</option>
+                        <option value="vinho">Vinho</option>
+                        <option value="cerveja">Cerveja</option>
+                        <option value="destilado">Destilado</option>
+                        <option value="nao-alcoolico">Não Alcoólico</option>
+                    </select>
+                    <span class="error-message" id="category-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-price">Preço *</label>
+                    <input type="number" id="product-price" name="price" step="0.01" min="0" required aria-describedby="price-error">
+                    <span class="error-message" id="price-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-stock">Quantidade em Estoque *</label>
+                    <input type="number" id="product-stock" name="stock" min="0" required aria-describedby="stock-error">
+                    <span class="error-message" id="stock-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-description">Descrição</label>
+                    <textarea id="product-description" name="description" rows="4" aria-describedby="description-help"></textarea>
+                    <span class="help-text" id="description-help">Opcional: Descreva as características do produto</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-image">URL da Imagem</label>
+                    <input type="url" id="product-image" name="image" aria-describedby="image-help">
+                    <span class="help-text" id="image-help">Opcional: Cole o link da imagem do produto</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-alcohol">Teor Alcoólico (%)</label>
+                    <input type="number" id="product-alcohol" name="alcohol" step="0.1" min="0" max="100">
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-volume">Volume (ml)</label>
+                    <input type="number" id="product-volume" name="volume" min="1">
+                </div>
+            </form>
+            
+            <div class="modal-footer">
+                <button type="button" id="cancel-btn" class="secondary-btn">Cancelar</button>
+                <button type="submit" form="product-form" id="save-btn" class="primary-btn">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-modal" class="modal" aria-hidden="true" role="dialog">
+        <div class="modal-content confirm-modal">
+            <div class="modal-header">
+                <h3>Confirmar Ação</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-message">Tem certeza que deseja realizar esta ação?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="confirm-cancel" class="secondary-btn">Cancelar</button>
+                <button type="button" id="confirm-ok" class="danger-btn">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="cart-sidebar" aria-hidden="true">
+        <div class="cart-header">
+            <h3>Carrinho de Compras</h3>
+            <button class="cart-close" aria-label="Fechar carrinho">&times;</button>
+        </div>
+        <div class="cart-body" id="cart-items">
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: <span id="cart-total">R$ 0,00</span></strong>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Finalizar Compra</button>
+        </div>
+    </div>
+
+
+    <div id="modal-overlay" class="modal-overlay" aria-hidden="true"></div>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <div id="loading-spinner" class="loading-spinner" aria-hidden="true">
+        <div class="spinner"></div>
+        <p>Carregando...</p>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Bebidas Premium</h4>
+                <p>Sua loja online de bebidas premium com qualidade e variedade.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>Email: contato@bebidaspremium.com</p>
+                <p>Telefone: (11) 9999-9999</p>
+            </div>
+            <div class="footer-section">
+                <h4>Sobre</h4>
+                <p>Campo Real 2025</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bebidas Premium. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
